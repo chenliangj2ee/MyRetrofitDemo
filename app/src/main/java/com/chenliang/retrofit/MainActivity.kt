@@ -1,11 +1,18 @@
 package com.chenliang.retrofit
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
+import com.chenliang.retrofit.net.Retrofit
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        login()
+    }
+
+
+    fun login() {
+        var api = Retrofit().newInstance(ApiService::class.java)
+        api.login("chenliang", "123456")
     }
 }
