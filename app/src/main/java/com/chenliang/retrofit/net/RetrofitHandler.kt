@@ -36,35 +36,46 @@ class RetrofitHandle() : InvocationHandler {
     fun postRequest(annotation: POST, method: Method?, args: Array<out Any>?) {
         var path = annotation.value
         var params = method?.parameterAnnotations
-        Log.i("MyLog", "path:$path")
+        Log.i(
+            "MyLog",
+            "------------------------------------------------------------------------------"
+        )
+        Log.i("MyLog", "请求路径:$path")
 
         var size = params?.size?.minus(1)
         for (i in 0..size!!) {
-            var p= params?.get(i)
+            var p = params?.get(i)
             p?.forEach {
                 if (it is Query) {
-                    Log.i("MyLog", "params:${it.value}:${args!![i]}")
+                    Log.i("MyLog", "请求参数:${it.value}:${args!![i]}")
 
                 }
             }
         }
 
+        //接下来就是OkHttp发起网络请求，在此省略
     }
+
     @RequiresApi(Build.VERSION_CODES.O)
     fun getRequest(annotation: GET, method: Method?, args: Array<out Any>?) {
         var path = annotation.value
         var params = method?.parameterAnnotations
-        Log.i("MyLog", "path:$path")
+        Log.i(
+            "MyLog",
+            "------------------------------------------------------------------------------"
+        )
+        Log.i("MyLog", "请求路径:$path")
 
         var size = params?.size?.minus(1)
         for (i in 0..size!!) {
-            var p= params?.get(i)
+            var p = params?.get(i)
             p?.forEach {
                 if (it is Query) {
-                    Log.i("MyLog", "params:${it.value}:${args!![i]}")
+                    Log.i("MyLog", "请求参数:${it.value}:${args!![i]}")
 
                 }
             }
         }
+        //接下来就是OkHttp发起网络请求，在此省略
     }
 }
