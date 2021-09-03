@@ -1,6 +1,7 @@
 package com.chenliang.retrofit
 
 import com.chenliang.retrofit.bean.BeanUser
+import com.chenliang.retrofit.net.GET
 import com.chenliang.retrofit.net.POST
 import com.chenliang.retrofit.net.Query
 import com.chenliang.retrofit.net.Response
@@ -15,7 +16,12 @@ import com.chenliang.retrofit.net.Response
 interface ApiService {
     @POST("app/login")
     fun login(
-        @Query("name") name: String,
-        @Query("pass") pass: String
+        @Query("QueryName") name: String,
+        @Query("QueryPass") pass: String
+    ): Response<BeanUser>
+    @GET("app/register")
+    fun register(
+        @Query("QueryPhone") name: String,
+        @Query("QueryPassword") pass: String
     ): Response<BeanUser>
 }

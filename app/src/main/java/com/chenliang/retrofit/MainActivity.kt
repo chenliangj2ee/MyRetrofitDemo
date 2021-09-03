@@ -11,8 +11,9 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-    fun login() {
+    private fun login() {
         var api = Retrofit().newInstance(ApiService::class.java)
         api.login("chenliang", "123456")
+        api.register("tom","123")
     }
 }

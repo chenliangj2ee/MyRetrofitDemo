@@ -11,8 +11,12 @@ import java.lang.reflect.Proxy
  */
 class Retrofit {
 
-    fun <T> newInstance(cls:Class<T>):T {
-        return Proxy.newProxyInstance(cls::class.java.classLoader, arrayOf(cls::class.java), RetrofitHandle<T>(cls.newInstance())) as T
+    fun <T> newInstance(clazz: Class<T>): T {
+        return Proxy.newProxyInstance(
+            clazz.classLoader,
+            arrayOf<Class<*>>(clazz),
+            RetrofitHandle()
+        ) as T
     }
 
 }
